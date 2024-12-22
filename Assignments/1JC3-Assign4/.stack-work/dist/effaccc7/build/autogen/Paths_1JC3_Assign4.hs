@@ -46,12 +46,12 @@ getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: 
 
 
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
-bindir     = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester 1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\bin"
-libdir     = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester 1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\lib\\x86_64-windows-ghc-9.6.6\\1JC3-Assign4-0.1.0.0-7XZLG4jbITj2VMZXR0cFJ4"
-dynlibdir  = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester 1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\lib\\x86_64-windows-ghc-9.6.6"
-datadir    = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester 1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\share\\x86_64-windows-ghc-9.6.6\\1JC3-Assign4-0.1.0.0"
-libexecdir = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester 1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\libexec\\x86_64-windows-ghc-9.6.6\\1JC3-Assign4-0.1.0.0"
-sysconfdir = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester 1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\etc"
+bindir     = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester_1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\bin"
+libdir     = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester_1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\lib\\x86_64-windows-ghc-9.6.6\\1JC3-Assign4-0.1.0.0-7XZLG4jbITj2VMZXR0cFJ4"
+dynlibdir  = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester_1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\lib\\x86_64-windows-ghc-9.6.6"
+datadir    = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester_1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\share\\x86_64-windows-ghc-9.6.6\\1JC3-Assign4-0.1.0.0"
+libexecdir = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester_1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\libexec\\x86_64-windows-ghc-9.6.6\\1JC3-Assign4-0.1.0.0"
+sysconfdir = "C:\\Users\\lucam\\OneDrive\\McMaster\\Semester_1\\Code\\1JC3\\Assignments\\1JC3-Assign4\\.stack-work\\install\\db261d48\\etc"
 
 getBinDir     = catchIO (getEnv "1JC3_Assign4_bindir")     (\_ -> return bindir)
 getLibDir     = catchIO (getEnv "1JC3_Assign4_libdir")     (\_ -> return libdir)

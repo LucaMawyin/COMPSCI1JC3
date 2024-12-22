@@ -107,7 +107,7 @@ instance Floating a => Floating (MathExpr a) where
   sin     = Sin
   cos     = Cos
   -- log is actually ln
-  log     = error "log is left un-implemented"
+  log     = log
   asin _  = error "asin is left un-implemented"
   acos _  = error "acos is left un-implemented"
   atan _  = error "atan is left un-implemented"
