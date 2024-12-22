@@ -162,6 +162,9 @@ diff e = simplify $ case e of
   -- Sine rule
   Sin a -> (diff a) * (Cos a)
 
+  -- Log rule
+  Log a -> (diff a) * (Power a (-1))
+
   -- Absolute value rule
   Abs a -> a * (diff a) * (recip (Abs a))
 
@@ -220,9 +223,6 @@ simplify expr = case expr of
     (Mult u v, w)
       | commute u w -> simplify (u * (v + 1))
       | commute v w -> simplify (v * (u + 1))
-
-    -- Log rules
-    (Log u, Log v) -> Log (simplify (u * v))
 
     -- Base Case
     (u, v) -> if commute u v then simplify (2 * u) else u + v
