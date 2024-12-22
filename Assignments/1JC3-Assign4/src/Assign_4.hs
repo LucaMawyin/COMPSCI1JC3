@@ -54,6 +54,7 @@ data MathExpr a =
   | Cos (MathExpr a)
   | Sin (MathExpr a)
   | Abs (MathExpr a)
+  | Log (MathExpr a)
   deriving (Eq,Show,Read)
 
 {- -----------------------------------------------------------------
@@ -71,6 +72,7 @@ eval (Power a b) v  = (eval a v) ^^ b
 eval (Cos a) v      = cos (eval a v)
 eval (Sin a) v      = sin (eval a v)
 eval (Abs a) v      = abs (eval a v)
+eval (Log a) v      = log (eval a v)
 
 {- -----------------------------------------------------------------
  - instance Num a => Num (MathExpr a)
@@ -107,7 +109,7 @@ instance Floating a => Floating (MathExpr a) where
   sin     = Sin
   cos     = Cos
   -- log is actually ln
-  log     = log
+  log     = Log
   asin _  = error "asin is left un-implemented"
   acos _  = error "acos is left un-implemented"
   atan _  = error "atan is left un-implemented"
@@ -219,6 +221,9 @@ simplify expr = case expr of
       | commute u w -> simplify (u * (v + 1))
       | commute v w -> simplify (v * (u + 1))
 
+    -- Log rules
+    (Log u, Log v) -> Log (simplify (u * v))
+
     -- Base Case
     (u, v) -> if commute u v then simplify (2 * u) else u + v
 
@@ -320,6 +325,9 @@ simplify expr = case expr of
   Cos a -> Cos (simplify a)
   Sin a -> Sin (simplify a)
 
+  -- Log simplification
+  Log a -> Log (simplify a)
+
   -- Function is the most simple it can be
   _ -> expr
 
@@ -382,6 +390,7 @@ complexity u = case u of
   (Power u n)   -> 3 + complexity u + abs n
   (Cos u)       -> 3 + complexity u
   (Sin u)       -> 3 + complexity u
+  (Log u)       -> 3 + complexity u
   (Abs u)       -> 2 + complexity u
 
 {- -----------------------------------------------------------------
@@ -436,6 +445,7 @@ pretty e = case e of
   Power a b ->  "(" ++ pretty a ++ "^^" ++ show b ++")"
   Cos a     -> "(Cos " ++ pretty a ++ ")"
   Sin a     -> "(Sin " ++ pretty a ++ ")"
+  Log a     -> "(Log " ++ pretty a ++ ")"
   Abs a     -> "(Abs " ++ pretty a ++ ")"
 
 
